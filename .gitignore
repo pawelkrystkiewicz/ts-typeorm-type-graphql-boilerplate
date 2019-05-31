@@ -1,0 +1,13 @@
+node_modules
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env
+.env*
+.env.*
+ormconfig.json
+*.development
+ormconfig.json
