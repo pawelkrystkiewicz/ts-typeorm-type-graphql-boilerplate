@@ -12,7 +12,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "typeRoots": [
@@ -20,6 +20,6 @@
       "./src/types"
     ]
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules","./test"],
   "include": ["./src/**/*.ts"]
 }

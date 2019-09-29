@@ -10,6 +10,7 @@ import { createSchema } from './utils/createSchema';
 import * as config from './utils/config';
 import { IContext } from './types/IContext';
 import { createConnection } from 'typeorm';
+import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
 
 export const main = async () => {
 	await createConnection();
@@ -34,6 +35,8 @@ export const main = async () => {
 	app.get('/status', async (req, res) => {
 		res.status(200).send('OK');
 	});
+
+	app.use('/voyager', voyagerMiddleware({ endpointUrl: '/graphql' }));
 
 	apolloServer.applyMiddleware({ app, cors: corsOptions });
 	const httpServer = http.createServer(app);

@@ -19,7 +19,7 @@ export class Variables extends BaseEntity {
 
 	@Field()
 	@Column()
-	variable: string;
+	name: string;
 
 	@Field()
 	@Column()
