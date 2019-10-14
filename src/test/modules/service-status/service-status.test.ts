@@ -12,21 +12,17 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-	connection.close();
+	await connection.close();
 });
 
-describe('Variable', () => {
-	it('inserts new record', async () => {
-		const variable = {
-			name: `TEST_VARIABLE`,
-			value: `3.14159265359`
-		};
-
+describe('HealthChecker', () => {
+	it('echos given value', async () => {
+		const echo = 2;
 		const response = await callGraphql({
 			source: statusQ,
-			variableValues: variable
+			variableValues: { echo }
 		});
 
-		expect(response).toMatchObject({ data: { variable } });
+		expect(response).toMatchObject({ data: { status: { echo } } });
 	});
 });

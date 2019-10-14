@@ -17,4 +17,6 @@ dotenv.config({
 	path: path
 });
 
-export const { CORS_URL, PORT } = process.env;
+export const PROD = process.env.NODE_ENV === 'production';
+
+export const { CORS_URL, PORT, REDIS_HOST, REDIS_PASS, REDIS_PORT } = process.env;

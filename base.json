@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"lib": [ "esnext" ],
+		"baseUrl": ".",
+		"strict": true,
+		"paths": {
+			"@entities/*": [ "./src/entity/*" ],
+			"@entities": [ "./src/entity" ],
+			"@modules/*": [ "./src/modules/*" ],
+			"@modules": [ "./src/modules" ],
+			"@types/*": [ "./src/types/*" ],
+			"@types": [ "./src/types" ],
+			"@utils": [ "./src/utils" ],
+			"@utils/*": [ "./src/utils/*" ],
+			"@root/*": [ "./src/*" ],
+			"@root": [ "./src/" ]
+		}
+	}
+}

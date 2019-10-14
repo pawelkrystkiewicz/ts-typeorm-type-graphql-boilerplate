@@ -1,20 +1,22 @@
-import 'dotenv';
-import http from 'http';
+import monitorConfig from '@utils/monitorConfig';
+import { RedisCache } from 'apollo-server-cache-redis';
 import { ApolloServer } from 'apollo-server-express';
-import cors = require('cors');
+import 'dotenv';
 import express from 'express';
+import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
+import http from 'http';
 import 'reflect-metadata';
 import { formatArgumentValidationError } from 'type-graphql';
-// import { createConnection } from 'typeorm';
-import { createSchema } from './utils/createSchema';
-import * as config from './utils/config';
-import { IContext } from './types/IContext';
 import { createConnection } from 'typeorm';
-import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
+import { IContext } from './types/IContext';
+import * as config from './utils/config';
+import { createSchema } from './utils/createSchema';
+import cors = require('cors');
+
+const statusMonitor = require('express-status-monitor')(monitorConfig);
 
 export const main = async () => {
 	await createConnection();
-
 
 	const schema = await createSchema();
 
@@ -22,28 +24,42 @@ export const main = async () => {
 		schema,
 		formatError: formatArgumentValidationError as any,
 		context: ({ req, res }): IContext => ({ req, res }),
-		playground: true
+		playground: !config.PROD,
+		cache: new RedisCache({
+			host: config.REDIS_HOST,
+			port: config.REDIS_PORT,
+			password: config.REDIS_PASS,
+			family: 4
+		})
 	});
 
 	const app = express();
+
 	const corsOptions: cors.CorsOptions = {
 		origin: `${config.CORS_URL}`,
 		credentials: true
 	};
-	const port = Number(config.PORT);
+
+	app.use('/voyager', voyagerMiddleware({ endpointUrl: '/graphql' }));
+
+	app.use('/', statusMonitor);
 
 	app.get('/status', async (req, res) => {
 		res.status(200).send('OK');
 	});
 
-	app.use('/voyager', voyagerMiddleware({ endpointUrl: '/graphql' }));
+	if (config.PROD) {
+		app.get(`${apolloServer.graphqlPath}`, async (req, res) => {
+			res.status(200).send('OK');
+		});
+	}
 
 	apolloServer.applyMiddleware({ app, cors: corsOptions });
+
 	const httpServer = http.createServer(app);
 
-
-	httpServer.listen(port, () => {
-		console.log(`🚀 Server is ready on http://localhost:${port}${apolloServer.graphqlPath}`);
+	httpServer.listen(Number(config.PORT), () => {
+		console.log(`🚀Server is ready on http://localhost:${config.PORT}${apolloServer.graphqlPath}`);
 	});
 };
 
