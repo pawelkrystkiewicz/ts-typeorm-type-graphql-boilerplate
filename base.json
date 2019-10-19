@@ -1,19 +1,21 @@
 {
 	"compilerOptions": {
-		"lib": [ "esnext" ],
 		"baseUrl": ".",
+		"rootDir": "src",
 		"strict": true,
 		"paths": {
 			"@entities/*": [ "./src/entity/*" ],
 			"@entities": [ "./src/entity" ],
-			"@modules/*": [ "./src/modules/*" ],
-			"@modules": [ "./src/modules" ],
+			"@resolvers/*": [ "./src/resolvers/*" ],
+			"@resolvers": [ "./src/resolvers" ],
 			"@types/*": [ "./src/types/*" ],
 			"@types": [ "./src/types" ],
 			"@utils": [ "./src/utils" ],
 			"@utils/*": [ "./src/utils/*" ],
 			"@root/*": [ "./src/*" ],
-			"@root": [ "./src/" ]
+			"@root": [ "./src/" ],
+			"@test/*": [ "./src/test-utils/*" ],
+			"@test": [ "./src/test-utils/" ]
 		}
 	}
 }

@@ -1,3 +1,0 @@
-query status($echo: Float) {
-  status(echo: $echo)
-}

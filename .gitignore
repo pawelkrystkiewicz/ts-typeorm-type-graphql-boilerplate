@@ -11,3 +11,5 @@ temp/
 ormconfig.json
 *.development
 ormconfig.json
+dev-ormconfig.json
+yarn.lock

@@ -1,6 +1,4 @@
-import { Connection } from 'typeorm';
-import { callGraphql } from '../../utils/callGraphql';
-import { testConnection } from '../../utils/connections';
+import { callGraphql } from '../../test-utils/callGraphql';
 
 const statusQ = `
 
@@ -34,11 +32,10 @@ mutation addSetting(
 
 `;
 
-let connection: Connection;
 beforeAll(async () => {
-	connection = await testConnection();
+
 });
-afterAll(async () => await connection.close());
+afterAll(async () =>{})
 
 describe('Setting', () => {
 	it('inserts new record', async () => {

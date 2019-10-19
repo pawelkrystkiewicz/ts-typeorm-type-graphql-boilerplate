@@ -2,6 +2,7 @@
   "extends": "./base",
   "compilerOptions": {
     "target": "es6",
+    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./build",
@@ -15,11 +16,20 @@
     "noUnusedLocals": false,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
+    "declaration": false,
+    "composite": false,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
     "typeRoots": [
       "node_modules/@types",
       "./src/types"
     ]
   },
-  "exclude": ["node_modules","src/test"],
+  "exclude": ["node_modules"],
   "include": ["./src/**/*.ts"]
 }

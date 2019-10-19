@@ -7,7 +7,7 @@ import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
 import http from 'http';
 import 'reflect-metadata';
 import { formatArgumentValidationError } from 'type-graphql';
-import { createConnection } from 'typeorm';
+import { createConnection, getConnection } from 'typeorm';
 import { IContext } from './types/IContext';
 import * as config from './utils/config';
 import { createSchema } from './utils/createSchema';
@@ -16,9 +16,10 @@ import cors = require('cors');
 const statusMonitor = require('express-status-monitor')(monitorConfig);
 
 export const main = async () => {
-	await createConnection();
 
 	const schema = await createSchema();
+
+	await createConnection();
 
 	const apolloServer = new ApolloServer({
 		schema,
@@ -59,7 +60,7 @@ export const main = async () => {
 	const httpServer = http.createServer(app);
 
 	httpServer.listen(Number(config.PORT), () => {
-		console.log(`🚀Server is ready on http://localhost:${config.PORT}${apolloServer.graphqlPath}`);
+		console.log(`Server is ready on http://localhost:${config.PORT}${apolloServer.graphqlPath} 🚀`);
 	});
 };
 

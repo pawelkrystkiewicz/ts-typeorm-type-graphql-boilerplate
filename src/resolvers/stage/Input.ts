@@ -1,5 +1,5 @@
 import { Stage } from '@entities/config/Stage';
-import { SharedSelectInput, SortOrder } from '@modules/shared/Input';
+import { SharedSelectInput, SortOrder } from '@resolvers/shared/Input';
 import { ArgsType, Field, InputType } from 'type-graphql';
 
 @InputType()

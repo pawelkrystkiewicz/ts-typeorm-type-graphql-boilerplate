@@ -5,6 +5,6 @@ import { CompetitorDetector } from '../typeorm-middlewares/CompetitorDetector';
 
 export const createSchema = () =>
 	buildSchema({
-		resolvers: [ __dirname + '/../modules/**/*.resolver.?s' ],
+		resolvers: [ __dirname + '/../resolvers/**/*.resolver.?s' ],
 		globalMiddlewares: [ ResolveTime,  CompetitorDetector ]
 	});
