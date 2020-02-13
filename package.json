@@ -26,6 +26,7 @@
 		"@types/mocha": "^5.2.7",
 		"apollo-server-cache-redis": "^1.1.4",
 		"apollo-server-express": "^2.4.8",
+		"appmetrics-dash": "^5.3.0",
 		"class-validator": "^0.9.1",
 		"cors": "latest",
 		"cross-env": "^5.2.0",
@@ -43,7 +44,7 @@
 		"reflect-metadata": "^0.1.10",
 		"ts-node": "8.4.1",
 		"tsconfig-paths-jest": "^0.0.1",
-		"type-graphql": "^0.16.0",
+		"type-graphql": "^0.17.6",
 		"typeorm": "^0.2.19",
 		"typescript": "^3.4.5"
 	},
