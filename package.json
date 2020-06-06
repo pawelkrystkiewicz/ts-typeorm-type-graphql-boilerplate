@@ -25,7 +25,7 @@
 		"@types/graphql-type-json": "^0.3.2",
 		"@types/mocha": "^5.2.7",
 		"apollo-server-cache-redis": "^1.1.4",
-		"apollo-server-express": "^2.4.8",
+		"apollo-server-express": "^2.14.2",
 		"appmetrics-dash": "^5.3.0",
 		"class-validator": "^0.9.1",
 		"cors": "latest",
