@@ -40,7 +40,7 @@
 		"jest": "^24.9.0",
 		"jest-module-name-mapper": "^0.1.2",
 		"pg": "^7.12.1",
-		"redis": "^2.8.0",
+		"redis": "^3.1.1",
 		"reflect-metadata": "^0.1.10",
 		"ts-node": "8.4.1",
 		"tsconfig-paths-jest": "^0.0.1",
